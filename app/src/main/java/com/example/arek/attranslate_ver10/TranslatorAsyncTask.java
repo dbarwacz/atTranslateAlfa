@@ -38,6 +38,8 @@ public class TranslatorAsyncTask extends AsyncTask<String,Void,String> {
         httpRequest = new HttpGet();
     }
 
+    //I have never used unwrapped httpclients so I will have to trust that you know what
+    // you are doing here ;)
     @Override
     protected String doInBackground(String... params) {
         try {

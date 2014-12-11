@@ -18,8 +18,11 @@ import android.widget.TextView;
 
 public class TranslateActivity extends Activity {
 
-    static private Spinner leftSpinner;
+    //why are they static?
+    private Spinner leftSpinner;
     static private Spinner rightSpinner;
+
+    //ook, got it, orientation change was messing with settings :P
 
     static private Button mainTranslateButton;
     static private EditText mainEditText;
@@ -45,11 +48,11 @@ public class TranslateActivity extends Activity {
         testListView();
     }
 
-    void initTranslatePresenter(){
+    void initTranslatePresenter() {
         translatePresenter = new TranslatePresenter(this);
     }
 
-    void initTexts(){
+    void initTexts() {
         mainEditText = (EditText) findViewById(R.id.mainEditText);
         mainEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -59,6 +62,7 @@ public class TranslateActivity extends Activity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //wouldnt it be easier to download this value at button translateButton press?
                 translatePresenter.onEditTextChanged(s);
             }
 
@@ -71,11 +75,12 @@ public class TranslateActivity extends Activity {
         testTextView = (TextView) findViewById(R.id.testTextView);
     }
 
-    void initButton(){
+    void initButton() {
         mainTranslateButton = (Button) findViewById(R.id.mainTranslateButton);
         mainTranslateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                mainEditText.getText() passed as parameter to method below?
                 translatePresenter.onMainTranslateButtonClicked();
             }
         });
@@ -96,6 +101,21 @@ public class TranslateActivity extends Activity {
     }
 
     void initSpinnerListeners() {
+        //wild guess but maybe change it to:
+//        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                if (id == R.id.leftSpinner) {
+//                    translatePresenter.sourceLanguageSelected(something here but not position as
+//                    this introduces too many dependencies (called method might have different
+//                  indexes than this one)
+//                } else if (id == R.id.rightSpinner) {
+//                    translatePresenter.resultLangugaeSelected()
+//                }
+//            }
+//        });
+//        leftSpinner.setOnItemClickListener(listener);
+//        right.setOnItemClickListener(listener);
         leftSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -127,8 +147,7 @@ public class TranslateActivity extends Activity {
         wordsListView.setAdapter(wordsAdapter);
     }
 
-    void setTestTextView(String word)
-    {
+    void setTestTextView(String word) {
         testTextView.setText(word);
     }
 }

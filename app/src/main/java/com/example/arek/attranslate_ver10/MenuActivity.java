@@ -36,6 +36,10 @@ public class MenuActivity extends Activity {
 
     void initButtonListeners()
     {
+        //what if you need to change the order?
+        //Better use private static final int CODE_TRANSLATE = 1
+        //(at build time get translated to numbers either way - no efficiency decrease but they
+        //are easily understandable for anyone who reads the code (and can be reordered at anytime)
         translateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +76,8 @@ public class MenuActivity extends Activity {
             case 1: startActivity(new Intent(this,TranslateActivity.class));break;
             case 2: startActivity(new Intent(this,HelpActivity.class));break;
             case 3: startActivity(new Intent(this,AuthorsActivity.class)); break;
+
+            //what with good old finish()? ;)
             case 4: System.exit(0); break;
         }
     }

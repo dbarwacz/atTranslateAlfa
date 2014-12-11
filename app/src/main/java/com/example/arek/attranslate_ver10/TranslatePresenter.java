@@ -13,11 +13,13 @@ public class TranslatePresenter {
     private Context translateActivityContext;
 
     public TranslatePresenter(TranslateActivity translateActivity){
+        //not nice, this should be interface for callbacks
         this.translateActivity = translateActivity;
         translateActivityContext = this.translateActivity.getApplicationContext();
         translateModel = new TranslateModel(translateActivityContext);
     }
 
+    //method name should suggest purpose, not condition when its called ie. translateWordAndDeliverResult()
     void onMainTranslateButtonClicked(){
         translateModel.buildStringRequest();
         translateModel.translateWord();

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/atTranslateAlfa.iml" filepath="$PROJECT_DIR$/atTranslateAlfa.iml" />
       <module fileurl="file://$PROJECT_DIR$/atTranslate_ver1.0.iml" filepath="$PROJECT_DIR$/atTranslate_ver1.0.iml" />
     </modules>
   </component>
